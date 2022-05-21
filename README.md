@@ -1,3 +1,3 @@
-# author batuhan atalay
-# Batlight lampside 
-# Arduino 
+# author Batuhan Atalay
+# Batlight Lampside 
+Arduino 
