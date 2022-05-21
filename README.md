@@ -1,3 +1,3 @@
 # author Batuhan Atalay
-# Batlight Lampside 
+# Batlight Lambader 
 Arduino 
