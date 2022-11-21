@@ -11,7 +11,8 @@ WebSocketsClient webSocket;
 #define NUMPIXELS 60
 
 #define USE_SERIAL Serial
-#define deviceId 2
+#define deviceId 3
+//Cartıllı's Home
 String animationControl="";
 int currentDevice = 0;
 int first;
