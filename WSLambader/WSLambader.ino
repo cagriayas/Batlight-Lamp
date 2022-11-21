@@ -28,7 +28,6 @@ void webSocketEvent(WStype_t type, uint8_t * payload, size_t length) {
       break;
     case WStype_CONNECTED: {
       Serial.println("Connected to Socket");
-      emit("{\"deviceid\":\"2\",\"connection\":\"allive\"}");
     }
       break;
     case WStype_TEXT:
@@ -48,7 +47,11 @@ void Control(String message){
       }
       int device = doc["deviceid"];
       String animation = doc["animation"];
+      String action = doc["action"];
         if(device == deviceId){
+          if(action == "alliveCheck") {
+            connectToSocket();
+          }
           currentDevice = device;
           if(animation == "") {
             animationControl = "";
@@ -67,7 +70,7 @@ void emit(String data){
 webSocket.sendTXT(data);
 }
 void connectToSocket(){
-  webSocket.sendTXT("{\"deviceid\":\"1\",\"connection\":\"allive\"}");
+  webSocket.sendTXT("{\"message\":{\"deviceid\":3,\"action\":\"allive\"}}");
 }
 String converter(uint8_t *str){
     return String((char *)str);
@@ -85,7 +88,8 @@ void setup() {
   USE_SERIAL.begin(9600);
   pixels.begin();
   USE_SERIAL.println();
-  WiFi.begin("batuatalay", "1.(Batuatalay)");
+  WiFi.begin("SUPERONLINE_Wİ-Fİ_5961", "ehtZh4ZdFSyC");
+  //WiFi.begin("batuatalay", "1.(Batuatalay)");
   
   Serial.print("Connecting");
   while (WiFi.status() != WL_CONNECTED)
