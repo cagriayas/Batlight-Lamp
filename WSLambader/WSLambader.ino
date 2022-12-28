@@ -8,11 +8,22 @@
 WebSocketsClient webSocket;
 
 #define PIN D2
-#define NUMPIXELS 60
+#define NUMPIXELS 35
 
 #define USE_SERIAL Serial
-#define deviceId 3
-//Cartıllı's Home
+#define deviceId 1
+
+// Cartıllı's Home deviceId=3 60
+// bedroom lamp deviceId=1 35
+// plant lamb deviceId=2 60
+
+String wifiName = "batuatalay";
+String wifiPassword = "1.(Batuatalay)";
+String socketAddress = "18.217.126.139";
+int socketPort = 3000;
+
+
+
 String animationControl="";
 int currentDevice = 0;
 int first;
@@ -70,7 +81,7 @@ void emit(String data){
 webSocket.sendTXT(data);
 }
 void connectToSocket(){
-  webSocket.sendTXT("{\"message\":{\"deviceid\":3,\"action\":\"allive\"}}");
+  webSocket.sendTXT("{\"message\":{\"deviceid\":1,\"action\":\"allive\"}}");
 }
 String converter(uint8_t *str){
     return String((char *)str);
@@ -88,8 +99,8 @@ void setup() {
   USE_SERIAL.begin(9600);
   pixels.begin();
   USE_SERIAL.println();
-  WiFi.begin("SUPERONLINE_Wİ-Fİ_5961", "ehtZh4ZdFSyC");
-  //WiFi.begin("batuatalay", "1.(Batuatalay)");
+  //WiFi.begin("SUPERONLINE_Wİ-Fİ_5961", "ehtZh4ZdFSyC");
+  WiFi.begin(wifiName, wifiPassword);
   
   Serial.print("Connecting");
   while (WiFi.status() != WL_CONNECTED)
@@ -103,7 +114,7 @@ void setup() {
   Serial.println(WiFi.localIP());
 
   // server address, port and URL
-  webSocket.begin("142.93.171.4", 3000);
+  webSocket.begin(socketAddress, 3000);
   // event handler
   webSocket.onEvent(webSocketEvent);
 
