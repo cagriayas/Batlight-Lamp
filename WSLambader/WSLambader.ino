@@ -13,14 +13,11 @@ WebSocketsClient webSocket;
 #define USE_SERIAL Serial
 #define deviceId 1
 
-// Cartıllı's Home deviceId=3 60
-// bedroom lamp deviceId=1 35
-// plant lamb deviceId=2 60
 
-String wifiName = "batuatalay";
-String wifiPassword = "1.(Batuatalay)";
-String socketAddress = "18.217.126.139";
-int socketPort = 3000;
+String wifiName = "//WIFI NAME//";
+String wifiPassword = "//WIFI PASSWORD//";
+String socketAddress = "//SOCKET IP ADDRESS//";
+int socketPort = //SOCKET LISTEN PORT//;
 
 
 
